@@ -3,6 +3,8 @@
 Interview the user relentlessly about a plan or design until the important
 decisions are explicit and shared.
 
+Source repository: <https://github.com/wufei-png/grilling>
+
 ## Difference From Upstream
 
 This skill is a small variant of
