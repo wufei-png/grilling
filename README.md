@@ -50,6 +50,7 @@ clawhub skill publish . \
   --name "Grilling" \
   --owner wufei-png \
   --source-repo wufei-png/grilling \
+  --source-commit "$(git rev-parse HEAD)" \
   --source-ref main \
   --source-path . \
   --changelog "Initial release"

@@ -8,3 +8,5 @@ Interview me relentlessly about every aspect of this plan until we reach a share
 Ask one question at a time and wait for feedback. If the user gives a per-turn maximum, treat it as a ceiling: ask multiple questions only when they are tightly related and on the same decision branch.
 
 If a question can be answered by exploring the codebase, explore the codebase instead.
+
+Source repository: https://github.com/wufei-png/grilling
