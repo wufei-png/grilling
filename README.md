@@ -3,6 +3,18 @@
 Interview the user relentlessly about a plan or design until the important
 decisions are explicit and shared.
 
+## Difference From Upstream
+
+This skill is a small variant of
+[mattpocock/skills `productivity/grilling`](https://github.com/mattpocock/skills/blob/main/skills/productivity/grilling/SKILL.md).
+
+The upstream skill keeps a strict one-question-at-a-time cadence. This fork keeps
+that default, but adds one behavioral extension: if the user gives a per-turn
+maximum, treat it as a ceiling and ask up to N tightly related questions in the
+same turn, only when they are on the same decision branch.
+
+![Diff showing the per-turn maximum behavior](docs/images/skill-diff.png)
+
 ## Install
 
 ### With `npx skills add`
@@ -53,7 +65,7 @@ clawhub skill publish . \
   --source-commit "$(git rev-parse HEAD)" \
   --source-ref main \
   --source-path . \
-  --changelog "Initial release"
+  --changelog "Describe the release"
 ```
 
 Add `--dry-run` to preview the release without publishing it.
