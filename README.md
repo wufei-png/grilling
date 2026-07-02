@@ -10,14 +10,14 @@ decisions are explicit and shared.
 Install the skill directly from this GitHub repository:
 
 ```bash
-npx skills add wufei-png/grilling -g -y
+npx skills add wufei-png/grilling -g -y --agent codex
 ```
 
 To install only this skill when the repository contains more skills in the
 future:
 
 ```bash
-npx skills add wufei-png/grilling --skill grilling -g -y
+npx skills add wufei-png/grilling --skill grilling -g -y --agent codex
 ```
 
 ### With `curl`
