@@ -1,22 +1,25 @@
 # Grilling
 
-Interview the user relentlessly about a plan or design until the important
-decisions are explicit and shared.
+Adaptive grilling: one question by default, dependency-safe batching on demand,
+and only genuine decisions reach the user.
 
 ## Difference From Upstream
 
-This skill is a small variant of
-[mattpocock/skills `productivity/grilling`](https://github.com/mattpocock/skills/blob/main/skills/productivity/grilling/SKILL.md).
+The upstream
+[mattpocock/skills `productivity/grilling`](https://github.com/mattpocock/skills/blob/main/skills/productivity/grilling/SKILL.md)
+asks the entire dependency-ready frontier in each round and prescribes a fixed
+question format. This variant retains dependency-aware exploration while
+keeping the interaction user-paced:
 
-The upstream skill keeps a strict one-question-at-a-time cadence. This fork keeps
-that default and adds two behavioral extensions:
-
-- If the user gives a per-turn maximum, treat it as a ceiling. Ask multiple
-  questions only when they are tightly related and on the same decision branch.
-- Choose clearly preferable options without discussion. Ask only about genuine
-  tradeoffs; list the viable options, compare their tradeoffs, and recommend one.
-
-![Diff showing the per-turn maximum behavior](docs/images/skill-diff.png)
+- Ask one question at a time by default. A user-provided per-turn maximum is a
+  ceiling; batch only tightly related questions whose prerequisites are settled
+  and whose answers do not depend on one another.
+- Resolve clearly preferable choices under established constraints and facts
+  available from context or tools without asking the user. Surface only genuine
+  tradeoffs, with alternatives, comparison, and a recommendation.
+- Revisit settled decisions when new answers invalidate their assumptions, then
+  finish with a verified design summary and explicit implementation
+  authorization before code changes.
 
 ## Install
 
@@ -37,22 +40,16 @@ npx skills add wufei-png/grilling --skill grilling -g -y --agent codex
 
 ### With `curl`
 
-Install the source `SKILL.md` into Codex's user skill directory:
+Install the complete skill into the shared user skill directory:
 
 ```bash
-mkdir -p "${CODEX_HOME:-$HOME/.codex}/skills/grilling"
-curl -fsSL \
-  https://raw.githubusercontent.com/wufei-png/grilling/main/SKILL.md \
-  -o "${CODEX_HOME:-$HOME/.codex}/skills/grilling/SKILL.md"
-```
-
-For agent setups that read from `~/.agents/skills`, use:
-
-```bash
-mkdir -p "$HOME/.agents/skills/grilling"
+mkdir -p "$HOME/.agents/skills/grilling/agents"
 curl -fsSL \
   https://raw.githubusercontent.com/wufei-png/grilling/main/SKILL.md \
   -o "$HOME/.agents/skills/grilling/SKILL.md"
+curl -fsSL \
+  https://raw.githubusercontent.com/wufei-png/grilling/main/agents/openai.yaml \
+  -o "$HOME/.agents/skills/grilling/agents/openai.yaml"
 ```
 
 ## Publish

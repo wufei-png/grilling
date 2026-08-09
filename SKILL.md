@@ -1,12 +1,17 @@
 ---
 name: grilling
-description: Interview the user relentlessly about a plan or design. Use when the user wants to stress-test a plan before building, or uses any 'grill' trigger phrases.
+description: Interview the user relentlessly about a plan, decision, or idea.
+disable-model-invocation: true
 ---
 
-Interview me relentlessly about every aspect of this plan until we reach a shared understanding. Walk down each branch of the design tree, resolving dependencies between decisions one-by-one.
+Interview me relentlessly, working through the decision tree in dependency order.
 
-When one option is clearly preferable, choose it without discussion. Ask only about decisions that involve genuine tradeoffs; for each, list the viable options, compare their tradeoffs, and recommend one.
+When one option is clearly preferable under the established constraints, choose it without discussion. Ask only about decisions that involve genuine tradeoffs; for each, list the viable options, compare their tradeoffs, and recommend one.
 
-Ask one question at a time and wait for feedback. If the user gives a per-turn maximum, treat it as a ceiling: ask multiple questions only when they are tightly related and on the same decision branch.
+Ask one question at a time and wait for feedback. If the user gives a per-turn maximum, treat it as a ceiling: ask multiple questions only when they are tightly related, their prerequisites are settled, and none depends on another's answer.
 
-If a question can be answered by exploring the codebase, explore the codebase instead.
+Revisit settled decisions when new answers invalidate their assumptions.
+
+If a factual question can be resolved from available context or tools, resolve it yourself instead of asking the user.
+
+When no material decision remains unresolved, summarize the agreed design and ask the user to verify it. If code changes are in scope, also request explicit implementation authorization and do not modify code until both are confirmed.
